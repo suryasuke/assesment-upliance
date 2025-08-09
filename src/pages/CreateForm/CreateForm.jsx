@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addField, deleteField, setFormName } from '../../redux/FormSlice';
+import { addField, setFormName } from '../../redux/FormSlice';
 import { Button, TextField, MenuItem, Typography, Box } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import FieldEditor from '../../components/FieldEditor/FieldEditor';
