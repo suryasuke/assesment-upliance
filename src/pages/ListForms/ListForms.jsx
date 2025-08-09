@@ -21,7 +21,7 @@ function MyForms() {
 
   const removeForm = (formId) => {
     deleteForm(formId);
-    setForms(listForms()); // refresh the list
+    setForms(listForms()); 
   };
 
   return (

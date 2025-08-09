@@ -10,7 +10,7 @@ function PreviewForm() {
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
 
-  // Initialize formData when fields change
+ 
   useEffect(() => {
     const initialData = {};
     fields.forEach(field => {
@@ -19,37 +19,37 @@ function PreviewForm() {
     setFormData(initialData);
   }, [fields]);
 
-  // Handle input change
+  
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field.id]: value }));
   };
 
-  // Simple validation (only required fields)
+ 
  const validate = () => {
   const newErrors = {};
 
   fields.forEach(field => {
     const val = formData[field.id] || '';
 
-    // Required
+  
     if (field.required && !val) {
       newErrors[field.id] = `${field.label} is required`;
       return;
     }
 
-    // Min length
+    
     if (field.validations?.minLength && val.length < field.validations.minLength) {
       newErrors[field.id] = `${field.label} must be at least ${field.validations.minLength} characters`;
       return;
     }
 
-    // Max length
+ 
     if (field.validations?.maxLength && val.length > field.validations.maxLength) {
       newErrors[field.id] = `${field.label} must be less than ${field.validations.maxLength} characters`;
       return;
     }
 
-    // Email format
+  
     if (field.validations?.email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(val)) {
@@ -58,7 +58,7 @@ function PreviewForm() {
       }
     }
 
-    // Password rule
+    
     if (field.validations?.password) {
       const passwordRegex = /^(?=.*[0-9]).{8,}$/;
       if (!passwordRegex.test(val)) {
@@ -72,14 +72,14 @@ function PreviewForm() {
   return Object.keys(newErrors).length === 0;
 };
 
-  // Handle form submit
+ 
   const handleSubmit = () => {
     if (validate()) {
       alert('Form submitted successfully! ✅');
     }
   };
 
-  // Render each field
+
   const renderField = (field) => {
     switch (field.type) {
       case 'text':
